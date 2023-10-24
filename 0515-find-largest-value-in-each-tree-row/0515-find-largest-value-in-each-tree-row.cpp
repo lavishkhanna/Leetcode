@@ -13,23 +13,23 @@
 vector<int> func(TreeNode * root){
     queue<TreeNode*> q;
     q.push(root);
-    vector<vector<int>>vs;
+    // vector<vector<int>>vs;
 
     vector<int>x;
 
-    priority_queue<int> pq;
+    // priority_queue<int> pq;
 
     while(q.empty()==false){
         int sz=q.size();
 
         int cnt=0;
-        vector<int>v;
+        // vector<int>v;
         priority_queue<int> pqs;
         while(cnt<sz){
 
             TreeNode * curr=q.front();
             q.pop();
-            v.push_back(curr->val);
+            // v.push_back(curr->val);
             pqs.push(curr->val);
 
             if(curr->left){
@@ -41,7 +41,7 @@ vector<int> func(TreeNode * root){
             cnt++;
         }
         x.push_back(pqs.top());
-        vs.push_back(v);
+        // vs.push_back(v);
 
     }
     return x;
