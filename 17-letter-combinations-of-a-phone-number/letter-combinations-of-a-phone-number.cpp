@@ -1,46 +1,31 @@
-vector<string> func(string digits){
-        if(digits.size()==0){
-            vector<string> v;
-            string s="";
-            v.push_back(s);
-            return v;
-        }
-
-        vector<string> v=func(digits.substr(1));
-
-        vector<string> dict = {"", "", "abc", "def", "ghi","jkl", "mno","pqrs", "tuv", "wxyz"};
-
-        // char ind=digits[0];
-        // ind=float(ind);
-        // ind=int(ind);
-        string req = dict[digits[0] - '0'];
-
-        // string req=dict[ind];
-        vector<string> vec;
-
-        for(int i=0;i<req.size();i++){
-            for(int j=0;j<v.size();j++){
-                vec.push_back(req[i]+v[j]);
-            }
-        }
-        return vec;
-
-}
-
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) {
+   void fun(int i , string &digits ,unordered_map<char,string> &mp , vector<string> &ans , string &temp)
+   {
+       if( i == digits.size() && temp != "") 
+       { ans.push_back(temp);}
 
-        if(digits==""){
-            vector<string>vs;
-            return vs;
+        for( auto x : mp[digits[i]])
+        {
+            temp.push_back(x);
+            fun(i+1,digits,mp,ans,temp);
+            temp.pop_back();
         }
-        vector<string>res=func(digits);
-        return res;
-
-
-
-
-
+   }
+    vector<string> letterCombinations(string digits) {
+        unordered_map<char,string> mp;        
+        mp['2']="abc";
+        mp['3']="def";
+        mp['4']="ghi";
+        mp['5']="jkl";
+        mp['6']="mno";
+        mp['7']="pqrs";
+        mp['8']="tuv";
+        mp['9']="wxyz";
+        vector<string> ans;
+        string temp="";
+        fun(0,digits,mp,ans,temp);
+        
+        return ans;
     }
 };
