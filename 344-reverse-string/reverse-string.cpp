@@ -3,12 +3,15 @@ void swap(vector<char>& s,int i,int j){
     char a=s[i];
     char b=s[j];
 
-    char temp=a;
-    a=b;
-    b=temp;
+    a=a^b;
+
+    b= a^b;
+
+    a=a^b;
 
     s[j]=b;
     s[i]=a;
+
     return;
 }
 
