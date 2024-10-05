@@ -24,9 +24,7 @@ public:
                 omap2[s2[i] - 'a']--;
                 omap2[s2[i + s1.size()] - 'a']++;
             }
-        }
-
-        return false;
+        }return false;
     }
 };
 
